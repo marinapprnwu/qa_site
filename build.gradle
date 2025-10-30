@@ -9,8 +9,8 @@ repositories {
 dependencies {
     // JUnit 5 (Jupiter)
     testImplementation("org.junit.jupiter:junit-jupiter:5.9.3",
-            "com.codeborne:selenide:7.11.1",
-            "net.datafaker:datafaker:2.5.2")
+            "com.codeborne:selenide:7.11.1")
+    implementation("net.datafaker:datafaker:2.5.2")
 }
 
 // JUnit Platform (JUnit 5)
