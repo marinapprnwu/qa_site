@@ -1,37 +1,40 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
-
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 
 public class LoginPage {
-    private SelenideElement loginButton = $("a.login-lnk"),
+    private final SelenideElement loginButton = $("a.login-lnk"),
             emailInput = $("#idLogForm").$("[name='email']"),
             passwordInput = $("#idLogForm").$("[name='password']"),
-            submitButton = $("#idLogForm").$("[value='войти']");
+            submitButton = $("#idLogForm").$("[value='войти']"),
+            msgPopup = $("div.popup-error-msg").$("div.popup-dsk");
 
 
-    public void goToLoginPage() {
+    public LoginPage goToLoginPage() {
         loginButton.click();
+        return this;
     }
 
-    public void setEmail(String value) {
+    public LoginPage setEmail(String value) {
         emailInput.setValue(value);
+        return this;
     }
 
-    public void setPassword(String value) {
+    public LoginPage setPassword(String value) {
         passwordInput.setValue(value);
+        return this;
     }
 
-    public void clickSubmitButton() {
+    public LoginPage clickSubmitButton() {
         submitButton.click();
+        return this;
     }
 
     public void successfulLogin() {
-        $("div.popup-error-msg").shouldBe(visible)
-                .$("div.popup-dsk").shouldHave(text("Неправильный логин/пароль."));
+        msgPopup.shouldBe(visible).shouldHave(text("Неправильный логин/пароль."));
     }
 
 }

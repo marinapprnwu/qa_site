@@ -1,14 +1,13 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
-
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
 public class RegistrationPage {
-    private SelenideElement loginButton = $("a.login-lnk"),
+    private final SelenideElement loginButton = $("a.login-lnk"),
             registrationButton = $("div.links").$("a.orange"),
             emailInput = $("#frmPersData").$("[name='email']"),
             passwordInput = $("#frmPersData").$("[name='password']"),
@@ -20,7 +19,9 @@ public class RegistrationPage {
             citySelect = $("div.select"),
             cityGroupList = $("ul.ui-selectgroup-list").$(byText("Другой город...")),
             othCityInput = $("#frmPersData").$("[name='othcity']"),
-            submitButton = $("#frmPersData").$("[type='submit']");
+            submitButton = $("#frmPersData").$("[type='submit']"),
+            msgReg = $("div.error-msg2");
+
 
     public RegistrationPage openLoginModal() {
         loginButton.click();
@@ -33,7 +34,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setRegistrationData(String email, String password, String firstName, String lastName, String birthDay,
-                               String phoneNumber, String othCity) {
+                                                String phoneNumber, String othCity) {
         emailInput.setValue(email);
         passwordInput.setValue(password);
         firstNameInput.setValue(firstName);
@@ -50,8 +51,7 @@ public class RegistrationPage {
     }
 
     public void successfulRegistration() {
-        $("div.error-msg2").shouldBe(visible)
-                .shouldHave(text("Проверка капчи не пройдена!"));
+        msgReg.shouldBe(visible).shouldHave(text("Проверка капчи не пройдена!"));
 
     }
 

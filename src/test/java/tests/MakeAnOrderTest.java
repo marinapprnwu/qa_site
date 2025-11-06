@@ -1,21 +1,11 @@
 package tests;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import pages.OrderPage;
 
-import static com.codeborne.selenide.Selectors.*;
-import static com.codeborne.selenide.Selenide.*;
-
-public class MakeAnOrderTest {
+public class MakeAnOrderTest extends TestBase {
 
     OrderPage orderPage = new OrderPage();
-
-    @BeforeAll
-    static void beforeAll() {
-        open("https://arenarussia.ru");
-        $("div.popup-region2").$(byText("ДА")).click();
-    }
 
     @Test
     void successfulMakeAnOrder() {
@@ -24,6 +14,5 @@ public class MakeAnOrderTest {
                 .choiceOfColor()
                 .goToCheckout()
                 .orderConfirmedSuccessfully();
-//        sleep(6000);
     }
 }
