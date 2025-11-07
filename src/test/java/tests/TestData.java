@@ -13,4 +13,6 @@ public class TestData {
     public static String birthDay = "07.07.2007";
     public static String phoneNumber = faker.phoneNumber().phoneNumberInternational();
     public static String othCity = "Йошкар-Ола";
+
+    public static String emailLogin = "test123@gmail.com";
 }

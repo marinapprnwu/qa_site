@@ -10,20 +10,22 @@ public class LoginPage {
             emailInput = $("#idLogForm").$("[name='email']"),
             passwordInput = $("#idLogForm").$("[name='password']"),
             submitButton = $("#idLogForm").$("[value='войти']"),
-            msgPopup = $("div.popup-error-msg").$("div.popup-dsk");
+            msgPopup = $("div.popup-error-msg").$("div.popup-dsk"),
+            closeButton = $("div.popup-error-msg").$("div.popup-close");
 
 
-    public LoginPage goToLoginPage() {
+    public void goToLoginPage() {
         loginButton.click();
-        return this;
     }
 
     public LoginPage setEmail(String value) {
+        emailInput.clear();
         emailInput.setValue(value);
         return this;
     }
 
     public LoginPage setPassword(String value) {
+        passwordInput.clear();
         passwordInput.setValue(value);
         return this;
     }
@@ -35,6 +37,14 @@ public class LoginPage {
 
     public void successfulLogin() {
         msgPopup.shouldBe(visible).shouldHave(text("Неправильный логин/пароль."));
+    }
+
+    public void unccessfulLogin() {
+        msgPopup.shouldBe(visible).shouldHave(text("Неправильно заполнено поле Эл.почта/телефон."));
+    }
+
+    public void closeModal() {
+        closeButton.click();
     }
 
 }
