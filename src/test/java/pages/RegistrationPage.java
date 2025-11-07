@@ -5,6 +5,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
+import static tests.TestData.*;
 
 public class RegistrationPage {
     private final SelenideElement loginButton = $("a.login-lnk"),
@@ -33,8 +34,8 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setRegistrationData(String email, String password, String firstName, String lastName, String birthDay,
-                                                String phoneNumber, String othCity) {
+
+    public RegistrationPage setRegistrationData() {
         emailInput.setValue(email);
         passwordInput.setValue(password);
         firstNameInput.setValue(firstName);

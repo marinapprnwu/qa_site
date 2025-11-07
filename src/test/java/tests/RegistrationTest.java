@@ -3,7 +3,6 @@ package tests;
 
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
-import static tests.TestData.*;
 
 
 public class RegistrationTest extends TestBase {
@@ -15,8 +14,11 @@ public class RegistrationTest extends TestBase {
 
         registrationPage.openLoginModal()
                 .openRegistrationForm()
-                .setRegistrationData(email, password, firstName, lastName, birthDay, phoneNumber, othCity)
+                .setRegistrationData()
                 .successfulRegistration();
 
     }
 }
+
+
+//
