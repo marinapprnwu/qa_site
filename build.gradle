@@ -1,5 +1,14 @@
 plugins {
     id 'java'
+    id 'io.qameta.allure' version '3.0.1'
+}
+
+allure {
+    adapter {
+        frameworks {
+            junit5
+        }
+    }
 }
 
 repositories {
