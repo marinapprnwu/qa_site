@@ -1,7 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
-import pages.components.GenderComponent;
+import pages.components.RadioButtonComponent;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static tests.TestData.*;
 
 public class RegistrationPage {
-    GenderComponent genderComponent = new GenderComponent();
+    RadioButtonComponent genderComponent = new RadioButtonComponent();
 
     private final SelenideElement loginButton = $("a.login-lnk"),
             registrationButton = $("div.links").$("a.orange"),
@@ -46,7 +46,7 @@ public class RegistrationPage {
         firstNameInput.setValue(firstName);
         lastNameInput.setValue(lastName);
         birthdayInput.setValue(birthDay);
-        genderComponent.chooseGender(gender);
+        genderComponent.chooseItem(gender);
         phoneNumberInput.setValue(phoneNumber);
         citySelect.click();
         cityGroupList.click();

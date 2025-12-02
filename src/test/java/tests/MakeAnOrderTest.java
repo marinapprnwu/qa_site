@@ -1,5 +1,6 @@
 package tests;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.OrderPage;
 
@@ -7,6 +8,7 @@ public class MakeAnOrderTest extends TestBase {
 
     OrderPage orderPage = new OrderPage();
 
+    @DisplayName("Успешное оформление заказа")
     @Test
     void successfulMakeAnOrder() {
         orderPage.goToTheOpticsCatalog()

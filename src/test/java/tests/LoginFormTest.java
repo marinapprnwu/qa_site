@@ -2,6 +2,7 @@ package tests;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -21,8 +22,8 @@ public class LoginFormTest extends TestBase {
         loginPage.closeModal();
     }
 
-
-    @ParameterizedTest(name = "Успешная авторизация на сайте с email = {0}, password = {1}")
+    @DisplayName("Успешная авторизация на сайте с email = {0}, password = {1}")
+    @ParameterizedTest()
     @CsvFileSource(resources = "/testdata/successfulLoginToTheSite.csv")
     void successfulLoginToTheSite(String email, String password) {
 
@@ -33,7 +34,8 @@ public class LoginFormTest extends TestBase {
 
     }
 
-    @ParameterizedTest(name = "Неуспешная авторизация на сайте: email = {0}, password = {1}")
+    @DisplayName("Неуспешная авторизация на сайте: email = {0}, password = {1}")
+    @ParameterizedTest()
     @CsvSource({
             ".@gmail.com, 1234",
             "test@.com, 12345"
